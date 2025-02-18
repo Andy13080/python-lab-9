@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Components Expenses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            width: 50%;
+            background: white;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        form {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Computer Components Expenses</h1>
+    <form method="POST">
+        <input type="text" name="hardware_part" placeholder="Enter Device" required>
+        <input type="number" step="0.01" name="price" placeholder="Enter Cost" required>
+        <button type="submit">Add Expense</button>
+    </form>
+
+    <form method="POST">
+        <button type="submit" name="clear">Clear</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>Device</th>
+            <th>Cost ($)</th>
+        </tr>
+        {% for expense in expenses %}
+        <tr>
+            <td>{{ expense.hardware_part }}</td>
+            <td>{{ expense.price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Total Cost: ${{ total_cost }}</h2>
+</body>
+</html>
